@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block body %}
+
+    {% for item in data %}
+
+<table id="example" class="table table-striped table-bordered" style="width:100%">
+  <thead>
+    <tr>
+        <th scope="col">arch</th>
+      <th scope="col">type</th>
+      <th scope="col">ubuntu release</th>
+      <th scope="col">openstack release</th>
+        <th scope="col">tempest result</th>
+    </tr>
+  </thead>
+  <tbody>
+
+{% for v in item %}
+    <tr>
+    <td>{{ v.arch }}</td>
+	<td>{{ v.type }}</td>
+	<td>{{ v['ubuntu release'] }}</td>
+	<td>{{ v['openstack release'] }}</td>
+    <td>{{ v['tempest result'] }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endfor %}
+{% endblock body %}
