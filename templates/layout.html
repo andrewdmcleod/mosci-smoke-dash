@@ -15,7 +15,7 @@
         $(document).ready(function() {
                 var table = $('#example').dataTable( {
                 "createdRow": function(row, data, dataIndex){
-                    if (data[4] != "PASS") {
+                    if (data[6] != "SUCCESS") {
                         $(row).addClass('red');
                     } else {
                        $(row).addClass('green');
