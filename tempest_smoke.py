@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+# Script fetches tempest smoke results from mosci and dumps to 2 json files
+
 import urllib.request, json , os, time, keyboard, sys, re
 import time
 import copy
