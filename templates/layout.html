@@ -14,18 +14,24 @@
     <script>
         $(document).ready(function() {
                 var table = $('#example').dataTable( {
-                "createdRow": function(row, data, dataIndex){
+		"order": [[ 0, "Desc" ]],
+	        paging: false,
+                "createdRow": function(row, data, dataIndex) {
                     if (data[6] != "SUCCESS") {
                         $(row).addClass('red');
                     } else {
                        $(row).addClass('green');
                     }
-                }      
-            }
+		    $('td:eq(0)', row).addClass('buildid');
+		    $('td:eq(1)', row).addClass('nowrap');
+		    $('td:eq(3)', row).addClass('nowrap');
+		    $('td:eq(0)', row).html('<a href="http://10.245.162.99:8080/view/3.%20Openstack%20Tests/job/pipeline%20test%20-%20openstack%20-%20tempest%20smoke/' + data[0] + '/consoleFull">' + data[0] + '</a>');
+                }
+            },
     );
 } );
     </script>
-<title>Mcleod Test</title>
+<title>mosci tempest smoke result dashboard</title>
 </head>
 <body>
 
