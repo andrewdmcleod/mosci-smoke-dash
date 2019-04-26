@@ -65,9 +65,14 @@ with urllib.request.urlopen(smokeUrl+ "/api/json/") as url:
                 #    detcount += 1
                 if details != "":
                     arch = details.split('/')[4].split()[4]
-                    bundleType= '-'.join(details.split('/')[12].split('-')[0:2])
-                    ubuntuRelease = details.split('/')[12].split('-')[2]
-                    openstackRelease = details.split('/')[12].split('-')[3]
+                    if "s390x" in details:
+                        bundleType= '-'.join(details.split('/')[9].split('-')[0:2])
+                        ubuntuRelease = details.split('/')[13].split('-')[0]
+                        openstackRelease = details.split('/')[13].split('-')[1]
+                    else:
+                        bundleType= '-'.join(details.split('/')[12].split('-')[0:2])
+                        ubuntuRelease = details.split('/')[12].split('-')[2]
+                        openstackRelease = details.split('/')[12].split('-')[3]
                     if tempest_result == "":
                         tempest_result = "SUCCESS"
                     #print("datetime:{},"\
