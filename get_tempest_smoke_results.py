@@ -17,6 +17,7 @@ matrix = {}
 matrix_full = {}
 matrix_last = {}
 addrow = False
+captured = False
 with urllib.request.urlopen(smokeUrl+ "/api/json/") as url:
     data = json.loads(url.read().decode())
     #fakedata = [150, 140, 127, 137, 122]
@@ -52,6 +53,7 @@ with urllib.request.urlopen(smokeUrl+ "/api/json/") as url:
                     if  'worker balance' in line.lower():
                         capture = False
                     if capture == True:
+                        captured = True
                         if lastline == "":
                             lastline = line
                         #print(lastline)
@@ -59,6 +61,8 @@ with urllib.request.urlopen(smokeUrl+ "/api/json/") as url:
                             tempest_result = tempest_result + lastline + "\n"
                         else:
                             lastline = line
+                if not captured:
+                    tempest_result = "FAILED - no tests executed"
                 #detcount = 0 
                 #for item in details.split('/'):
                 #    print("detail {}: {}".format(detcount, item))
