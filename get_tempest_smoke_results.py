@@ -57,10 +57,12 @@ with urllib.request.urlopen(smokeUrl+ "/api/json/") as url:
                         if lastline == "":
                             lastline = line
                         #print(lastline)
-                        if '------' in line or 'InvocationError' in line:
+                        if '------' in line:
                             tempest_result = tempest_result + lastline + "\n"
                         else:
                             lastline = line
+                        if 'InvocationError' in line:
+                            tempest_result = line
                 #detcount = 0 
                 #for item in details.split('/'):
                 #    print("detail {}: {}".format(detcount, item))
